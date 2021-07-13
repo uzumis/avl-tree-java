@@ -37,32 +37,78 @@ Scanner in = new Scanner (System.in);
 							arvore = arvore.verificaBalanceamento();
 							System.out.println(arvore.printArvore(0));
 
-							System.out.println("Continuar Inserindo? [1] - Sim ; [Qualquer Outro Numero] - Nao");
+							System.out.println("Continuar Inserindo? [1] - Sim ; [2] - Nao");
 								int continuacao = new Scanner(System.in).nextInt();
 
 									if (continuacao == 1){
 										continuar=true;
-										}else{
+										System.out.println("Insira um elemento novo:");
+										}else if(continuacao == 2) {
 										continuar=false;
-									break;
-				}
-			}
+								
+									}
+
+														}
+					break;
+
 					case 2:
 					if (arvorecriada == false){
 					System.out.println("Impossivel adicionar elemento. A arvore nao foi criada!");
 					break;
-				}else{
+				}
+				else{
+					continuar=true;
+					System.out.println("Insira um novo Elemento: ");
+					while(continuar==true){//inserir outros elementos
+							Scanner teclado2 = new Scanner(System.in);
+							arvore = arvore.inserir(new Elemento(teclado2.nextInt()));
+							arvore.calcularBalanceamento();
+							arvore = arvore.verificaBalanceamento();
+							System.out.println(arvore.printArvore(0));
+
+							System.out.println("Continuar Inserindo? [1] - Sim ; [2] - Nao");
+								int continuacao = new Scanner(System.in).nextInt();
+
+									if (continuacao == 1){
+										continuar=true;
+										System.out.println("Insira um elemento novo:");
+										}else if(continuacao == 2) {
+										continuar=false;
+									
+									}
 
 				}
+			}
+					break;
 							
 					case 3:
 
+					if (arvorecriada == false){
+					System.out.println("Impossivel remover elemento. A arvore nao foi criada!");
+					break;
+				}else{
+					System.out.println("Remova um Elemento: ");
+					System.out.println("Atualmente, a arvore esta com estes elementos ");
+					System.out.println(arvore.printArvore(0));
+					Scanner teclado3 = new Scanner(System.in);
+					arvore = arvore.remover(teclado3.nextInt());
+							arvore.calcularBalanceamento();
+							arvore = arvore.verificaBalanceamento();
+							System.out.println("Removido com sucesso!\n");
+							System.out.println("Sua arvore atual ficou: ");
+							System.out.println(arvore.printArvore(0));
+					}
+
+					break;
 
 					case 4: 
+
+
 					if (arvorecriada == false){
 					System.out.println("Impossivel imprimir elemento. A arvore nao foi criada!");
 					break;
 				}else{
+					System.out.println("Atualmente, a arvore esta com estes elementos ");
 					System.out.println(arvore.printArvore(0));
 					break;
 				}
